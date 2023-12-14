@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 {
 	FILE *fb = NULL;/*file pointer to access files*/
 	char str[10];
+	char *token;
 
 	if (argc != 2) /* to satisfy one argumanet condition*/
 	{
@@ -22,10 +23,17 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while (!feof(fb))
+	while (!feof(fb))/* to make fgets complete the file*/
 	{
 		fgets(str, 10, fb);
-		printf("%s", str);
+		printf("%s", str);/* to show what fgets*/
+		token = strtok(str, " ");
+		while (token != NULL)/*to make strtok complete the line
+		{
+			printf("this token :%s\n", token);/*to show what saved in token*/
+			token = strtok(NULL, " ");
+		}
+       
 	}
 	fclose(fb);
 	return (0);
